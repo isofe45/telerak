@@ -97,7 +97,7 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 120px 20px; /* Increased padding since stats are gone */
+            padding: 120px 20px;
             background: radial-gradient(circle at top, #1f2f40 0%, var(--bg-dark) 70%);
             animation: fadeIn 1s ease-out;
         }
@@ -313,7 +313,7 @@
     <footer>
         <p>TeleRak Updates © 2025</p>
         <div style="margin-top: 15px;">
-            <a href="terms.html" style="color: var(--text-sub); margin: 0 10px; text-decoration: none;" id="footer-terms">الشروط والأحكام</a> |
+            <a href="terms/terms_ar.html" style="color: var(--text-sub); margin: 0 10px; text-decoration: none;" id="footer-terms">الشروط والأحكام</a> |
             <a href="https://t.me/QIObot" style="color: var(--text-sub); margin: 0 10px; text-decoration: none;">Bot Link</a>
         </div>
     </footer>
@@ -343,7 +343,8 @@
                 agent1Btn: "تواصل للشحن",
                 agent2Name: "الوكيل العربي",
                 agent2Btn: "تواصل للشحن",
-                footerTerms: "الشروط والأحكام"
+                footerTerms: "الشروط والأحكام",
+                termsLink: "terms/terms_ar.html" // مسار الملف العربي
             },
             en: {
                 dir: "ltr",
@@ -368,7 +369,8 @@
                 agent1Btn: "Contact to Top-up",
                 agent2Name: "Arab Agent (IQ/KSA)",
                 agent2Btn: "Contact to Top-up",
-                footerTerms: "Terms & Conditions"
+                footerTerms: "Terms & Conditions",
+                termsLink: "terms/terms_en.html" // مسار الملف الإنجليزي
             }
         };
 
@@ -407,7 +409,10 @@
             document.getElementById('agent-2-name').textContent = t.agent2Name;
             document.getElementById('agent-2-btn').textContent = t.agent2Btn + " @anas5";
             
-            document.getElementById('footer-terms').textContent = t.footerTerms;
+            // تحديث نص ورابط الشروط والأحكام ديناميكياً
+            const termsElement = document.getElementById('footer-terms');
+            termsElement.textContent = t.footerTerms;
+            termsElement.setAttribute('href', t.termsLink);
         }
     </script>
 
