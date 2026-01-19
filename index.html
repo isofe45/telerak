@@ -3,245 +3,413 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TeleRak | تيليراك - المتجر الأسرع لحسابات تيليجرام</title>
+    <title>TeleRak | تيليراك</title>
     <style>
         :root {
-            --primary: #2AABEE; /* Telegram Blue */
-            --dark: #17212b;
-            --darker: #0e1621;
-            --text: #ffffff;
-            --gray: #8c9cab;
+            --primary: #2AABEE;
+            --primary-dark: #229ed9;
+            --bg-dark: #0e1621;
+            --bg-card: #17212b;
+            --text-main: #ffffff;
+            --text-sub: #8c9cab;
             --accent: #ff5e57;
+            --success: #00c73e;
         }
-        
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
         }
 
         body {
-            background-color: var(--dark);
-            color: var(--text);
-            line-height: 1.6;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* Header */
         header {
-            background-color: var(--darker);
-            padding: 20px;
+            padding: 20px 5%;
+            background-color: rgba(14, 22, 33, 0.95);
+            backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            border-bottom: 1px solid #1c2b3b;
         }
 
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--text-sub);
+            color: var(--text-main);
+            padding: 5px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--primary);
             color: var(--primary);
         }
 
-        .btn-main {
+        .cta-btn {
             background-color: var(--primary);
             color: white;
-            padding: 10px 20px;
-            text-decoration: none;
+            padding: 10px 25px;
             border-radius: 50px;
+            text-decoration: none;
             font-weight: bold;
-            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(42, 171, 238, 0.3);
+            display: inline-block;
         }
 
-        .btn-main:hover {
-            opacity: 0.9;
+        .cta-btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(42, 171, 238, 0.5);
         }
 
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            padding: 120px 20px; /* Increased padding since stats are gone */
+            background: radial-gradient(circle at top, #1f2f40 0%, var(--bg-dark) 70%);
+            animation: fadeIn 1s ease-out;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 3rem;
+            margin-bottom: 25px;
+            background: -webkit-linear-gradient(45deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            color: var(--gray);
             font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 40px;
+            color: var(--text-sub);
+            max-width: 650px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
         }
 
-        /* Features */
-        .features {
-            padding: 50px 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+        /* Features Grid */
+        .grid-section {
+            padding: 60px 5%;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .card {
-            background-color: var(--darker);
-            padding: 30px;
-            border-radius: 15px;
+        .section-title {
             text-align: center;
-            border: 1px solid #2b3a4a;
+            margin-bottom: 50px;
+            font-size: 2rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid #232e3c;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary);
         }
 
         .card h3 {
-            color: var(--primary);
             margin-bottom: 15px;
+            font-size: 1.3rem;
         }
 
-        /* Warning Section */
-        .warning-box {
-            background-color: rgba(255, 94, 87, 0.1);
-            border: 1px solid var(--accent);
-            padding: 30px;
+        .card p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        /* Warning Box */
+        .warning-section {
+            background: rgba(255, 94, 87, 0.05);
+            border: 1px solid rgba(255, 94, 87, 0.2);
+            border-radius: 16px;
+            padding: 40px;
             margin: 20px auto;
-            max-width: 800px;
-            border-radius: 10px;
+            max-width: 900px;
             text-align: center;
         }
-        
-        .warning-title {
-            color: var(--accent);
+
+        .timer-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 6px;
             font-weight: bold;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            font-size: 0.85rem;
+            margin: 5px;
         }
 
-        /* Payments */
-        .payments {
-            background-color: var(--darker);
-            padding: 60px 20px;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .agents-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
-
+        /* Agents */
         .agent-card {
-            background-color: var(--dark);
-            padding: 25px;
-            border-radius: 10px;
-            width: 300px;
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 30px;
             text-align: center;
+            border: 1px solid #232e3c;
         }
 
-        .agent-link {
+        .agent-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: 1px solid var(--primary);
             color: var(--primary);
             text-decoration: none;
-            font-weight: bold;
-            display: block;
-            margin-top: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .agent-btn:hover {
+            background: var(--primary);
+            color: white;
         }
 
         /* Footer */
         footer {
+            background-color: #080c10;
+            padding: 40px 5%;
             text-align: center;
-            padding: 20px;
-            background-color: var(--darker);
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-top: 50px;
+            border-top: 1px solid #1c2b3b;
+            color: var(--text-sub);
+            margin-top: auto;
         }
 
-        .highlight {
-            color: #fff;
-            font-weight: bold;
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Direction Handling */
+        [dir="ltr"] .card::before {
+            left: 0;
+            right: auto;
+        }
+        
+        [dir="rtl"] .card::before {
+            right: 0;
+            left: auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero { padding: 80px 20px; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">TeleRak | تيليراك</div>
-        <a href="https://t.me/QIObot" class="btn-main">ابدأ الآن ✈️</a>
+        <div class="logo">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#2AABEE"/>
+            </svg>
+            TeleRak
+        </div>
+        <div class="nav-actions">
+            <button class="lang-btn" onclick="toggleLanguage()">English</button>
+            <a href="https://t.me/QIObot" class="cta-btn" id="nav-btn">افتح البوت</a>
+        </div>
     </header>
 
     <section class="hero">
-        <h1>متجرك الأول لحسابات تيليجرام</h1>
-        <p>السرعة + الأمان = تيليراك 🤍 <br> احصل على أرقام وهمية وحسابات قديمة (Old Creation) جاهزة للاستخدام الفوري.</p>
-        <a href="https://t.me/QIObot" class="btn-main" style="padding: 15px 40px; font-size: 1.1rem;">افتح البوت @QIObot</a>
+        <h1 id="hero-title">المتجر الأسرع والأكثر أماناً</h1>
+        <p id="hero-desc">احصل على حسابات تيليجرام قديمة جاهزة للاستخدام الفوري. نظام آلي بالكامل يعمل 24/7 لخدمتك.</p>
+        <a href="https://t.me/QIObot" class="cta-btn" style="padding: 15px 40px; font-size: 1.1rem;" id="hero-btn">ابــدأ التســوق الآن 🛒</a>
     </section>
 
-    <section class="features">
-        <div class="card">
-            <h3>⚡ سرعة خيالية</h3>
-            <p>نظام آلي بالكامل. استلم حسابك وقم بتفعيله خلال دقائق معدودة دون انتظار تدخل بشري.</p>
-        </div>
-        <div class="card">
-            <h3>🛡️ أمان تام</h3>
-            <p>خصوصيتك أولويتنا. بمجرد استلامك للحساب، يغادر البوت تلقائياً ليصبح الحساب ملكك وحدك.</p>
-        </div>
-        <div class="card">
-            <h3>📅 حسابات قديمة</h3>
-            <p>نوفر حسابات بإنشاءات قديمة (Old Accounts) لتكون أكثر مقاومة للحظر وأكثر استقراراً.</p>
+    <section class="grid-section">
+        <h2 class="section-title" id="features-title">لماذا تيليراك؟</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <h3 id="feat-1-title">⚡ تسليم فوري</h3>
+                <p id="feat-1-desc">لا داعي للانتظار. نظامنا الآلي يرسل لك الحساب وكود التفعيل خلال ثوانٍ من إتمام الطلب.</p>
+            </div>
+            <div class="card">
+                <h3 id="feat-2-title">🛡️ خصوصية تامة</h3>
+                <p id="feat-2-desc">بمجرد استلامك للحساب، يقوم البوت بالخروج منه تلقائياً ليصبح ملكك وحدك بنسبة 100%.</p>
+            </div>
+            <div class="card">
+                <h3 id="feat-3-title">💎 حسابات مميزة</h3>
+                <p id="feat-3-desc">نوفر حسابات بإنشاء قديم (Old Creation) مقاومة للحظر وأكثر استقراراً للعمل.</p>
+            </div>
         </div>
     </section>
 
-    <div class="warning-box">
-        <div class="warning-title">⚠️ قواعد الوقت الصارمة</div>
-        <p>لضمان السرعة، يعمل البوت بنظام المؤقت:</p>
-        <ul style="list-style: none; margin-top: 10px;">
-            <li>⏱️ <b>5 دقائق:</b> لاستلام كود التفعيل بعد الدفع.</li>
-            <li>⏱️ <b>2 دقيقة:</b> لتسجيل الدخول بعد وصول الكود.</li>
-        </ul>
-        <p style="font-size: 0.9rem; margin-top: 10px; color: var(--gray);">عدم الالتزام بالوقت يؤدي لإلغاء الطلب واسترجاع الرصيد للمحفظة.</p>
+    <div class="warning-section">
+        <h3 style="color: var(--accent); margin-bottom: 20px;" id="warn-title">⚠️ سياسة الوقت الصارمة</h3>
+        <p style="margin-bottom: 20px; color: var(--text-sub);" id="warn-desc">لضمان السرعة ومنع الاحتيال، نطبق نظام مؤقت آلي:</p>
+        <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+            <span class="timer-badge" id="warn-badge-1">⏱️ 5 دقائق للكود</span>
+            <span class="timer-badge" id="warn-badge-2">⏱️ دقيقتين للدخول</span>
+        </div>
     </div>
 
-    <section class="payments">
-        <h2 class="section-title">طرق الدفع والوكلاء</h2>
-        <div class="agents-grid">
-            
+    <section class="grid-section">
+        <h2 class="section-title" id="agents-title">الوكلاء وطرق الدفع</h2>
+        <div class="cards-grid">
             <div class="agent-card">
-                <h3>🌍 الوكيل الدولي ومصر</h3>
-                <p style="margin: 15px 0; color: var(--gray);">
-                    💎 USDT (Crypto)<br>
-                    🇪🇬 فودافون كاش
-                </p>
-                <a href="https://t.me/e_e_9_9" class="agent-link">تواصل للشحن: @e_e_9_9</a>
+                <h3 id="agent-1-name">الوكيل الدولي ومصر</h3>
+                <p style="color: var(--text-sub); margin: 15px 0;">USDT (Crypto) • Vodafone Cash</p>
+                <a href="https://t.me/e_e_9_9" class="agent-btn" id="agent-1-btn">تواصل للشحن @e_e_9_9</a>
             </div>
-
             <div class="agent-card">
-                <h3>🇮🇶 الوكيل العربي (العراق والسعودية)</h3>
-                <p style="margin: 15px 0; color: var(--gray);">
-                    🇮🇶 زين كاش & ماستر كارد<br>
-                    🇸🇦 سوا (STC) & الراجحي
-                </p>
-                <a href="https://t.me/anas5" class="agent-link">تواصل للشحن: @anas5</a>
+                <h3 id="agent-2-name">الوكيل العربي (العراق/السعودية)</h3>
+                <p style="color: var(--text-sub); margin: 15px 0;">ZainCash • MasterCard • Sawa • Rajhi</p>
+                <a href="https://t.me/anas5" class="agent-btn" id="agent-2-btn">تواصل للشحن @anas5</a>
             </div>
-
         </div>
     </section>
 
     <footer>
-        <p>جميع الحقوق محفوظة © 2025 TeleRak Updates</p>
-        <p style="margin-top: 5px;">
-            <a href="https://t.me/QIObot" style="color: var(--gray); text-decoration: none;">Bot</a> | 
-            <a href="https://t.me/TeleRak_Updates" style="color: var(--gray); text-decoration: none;">Channel</a>
-        </p>
+        <p>TeleRak Updates © 2025</p>
+        <div style="margin-top: 15px;">
+            <a href="terms.html" style="color: var(--text-sub); margin: 0 10px; text-decoration: none;" id="footer-terms">الشروط والأحكام</a> |
+            <a href="https://t.me/QIObot" style="color: var(--text-sub); margin: 0 10px; text-decoration: none;">Bot Link</a>
+        </div>
     </footer>
+
+    <script>
+        const translations = {
+            ar: {
+                dir: "rtl",
+                langBtn: "English",
+                navBtn: "افتح البوت",
+                heroTitle: "المتجر الأسرع والأكثر أماناً",
+                heroDesc: "احصل على حسابات تيليجرام قديمة جاهزة للاستخدام الفوري. نظام آلي بالكامل يعمل 24/7 لخدمتك.",
+                heroBtn: "ابــدأ التســوق الآن 🛒",
+                featuresTitle: "لماذا تيليراك؟",
+                feat1Title: "⚡ تسليم فوري",
+                feat1Desc: "لا داعي للانتظار. نظامنا الآلي يرسل لك الحساب وكود التفعيل خلال ثوانٍ من إتمام الطلب.",
+                feat2Title: "🛡️ خصوصية تامة",
+                feat2Desc: "بمجرد استلامك للحساب، يقوم البوت بالخروج منه تلقائياً ليصبح ملكك وحدك بنسبة 100%.",
+                feat3Title: "💎 حسابات مميزة",
+                feat3Desc: "نوفر حسابات بإنشاء قديم (Old Creation) مقاومة للحظر وأكثر استقراراً للعمل.",
+                warnTitle: "⚠️ سياسة الوقت الصارمة",
+                warnDesc: "لضمان السرعة ومنع الاحتيال، نطبق نظام مؤقت آلي:",
+                warnBadge1: "⏱️ 5 دقائق للكود",
+                warnBadge2: "⏱️ دقيقتين للدخول",
+                agentsTitle: "الوكلاء وطرق الدفع",
+                agent1Name: "الوكيل الدولي ومصر",
+                agent1Btn: "تواصل للشحن",
+                agent2Name: "الوكيل العربي",
+                agent2Btn: "تواصل للشحن",
+                footerTerms: "الشروط والأحكام"
+            },
+            en: {
+                dir: "ltr",
+                langBtn: "عربي",
+                navBtn: "Open Bot",
+                heroTitle: "Fastest & Safest Store",
+                heroDesc: "Get old Telegram accounts ready for instant use. Fully automated system serving you 24/7.",
+                heroBtn: "Start Shopping Now 🛒",
+                featuresTitle: "Why TeleRak?",
+                feat1Title: "⚡ Instant Delivery",
+                feat1Desc: "No waiting. Our automated system sends you the account and activation code within seconds.",
+                feat2Title: "🛡️ Total Privacy",
+                feat2Desc: "Once you receive the account, the bot automatically logs out, making it 100% yours.",
+                feat3Title: "💎 Premium Accounts",
+                feat3Desc: "We provide Old Creation accounts that are ban-resistant and more stable.",
+                warnTitle: "⚠️ Strict Time Policy",
+                warnDesc: "To ensure speed, we enforce an automated timer system:",
+                warnBadge1: "⏱️ 5 Mins for Code",
+                warnBadge2: "⏱️ 2 Mins to Login",
+                agentsTitle: "Agents & Payments",
+                agent1Name: "International & Egypt Agent",
+                agent1Btn: "Contact to Top-up",
+                agent2Name: "Arab Agent (IQ/KSA)",
+                agent2Btn: "Contact to Top-up",
+                footerTerms: "Terms & Conditions"
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const t = translations[currentLang];
+            
+            // Update Direction
+            document.documentElement.dir = t.dir;
+            document.querySelector('.lang-btn').textContent = t.langBtn;
+
+            // Update Content
+            document.getElementById('nav-btn').textContent = t.navBtn;
+            document.getElementById('hero-title').textContent = t.heroTitle;
+            document.getElementById('hero-desc').textContent = t.heroDesc;
+            document.getElementById('hero-btn').textContent = t.heroBtn;
+
+            document.getElementById('features-title').textContent = t.featuresTitle;
+            document.getElementById('feat-1-title').textContent = t.feat1Title;
+            document.getElementById('feat-1-desc').textContent = t.feat1Desc;
+            document.getElementById('feat-2-title').textContent = t.feat2Title;
+            document.getElementById('feat-2-desc').textContent = t.feat2Desc;
+            document.getElementById('feat-3-title').textContent = t.feat3Title;
+            document.getElementById('feat-3-desc').textContent = t.feat3Desc;
+
+            document.getElementById('warn-title').textContent = t.warnTitle;
+            document.getElementById('warn-desc').textContent = t.warnDesc;
+            document.getElementById('warn-badge-1').textContent = t.warnBadge1;
+            document.getElementById('warn-badge-2').textContent = t.warnBadge2;
+
+            document.getElementById('agents-title').textContent = t.agentsTitle;
+            document.getElementById('agent-1-name').textContent = t.agent1Name;
+            document.getElementById('agent-1-btn').textContent = t.agent1Btn + " @e_e_9_9";
+            document.getElementById('agent-2-name').textContent = t.agent2Name;
+            document.getElementById('agent-2-btn').textContent = t.agent2Btn + " @anas5";
+            
+            document.getElementById('footer-terms').textContent = t.footerTerms;
+        }
+    </script>
 
 </body>
 </html>
