@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شروط الخدمة وسياسة الاستخدام | TeleRak</title>
+    <style>
+        :root {
+            --bg-color: #0e1621;
+            --card-bg: #17212b;
+            --text-main: #ffffff;
+            --text-secondary: #8c9cab;
+            --accent: #2AABEE;
+            --danger: #ff5e57;
+            --border: #2b3a4a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        /* Container Layout */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 280px 1fr; /* Sidebar + Content */
+            gap: 40px;
+            padding: 40px 20px;
+        }
+
+        /* Sidebar Navigation */
+        aside {
+            position: sticky;
+            top: 40px;
+            height: fit-content;
+        }
+
+        .nav-links {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .nav-links h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-links ul {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 10px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: 0.2s;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+            transform: translateX(-5px);
+        }
+
+        /* Main Content */
+        main {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .last-updated {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        p, li {
+            color: #d1d9e0;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Highlight Boxes */
+        .policy-box {
+            background-color: rgba(42, 171, 238, 0.1);
+            border-right: 4px solid var(--accent);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .danger-box {
+            background-color: rgba(255, 94, 87, 0.1);
+            border-right: 4px solid var(--danger);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 10px 25px;
+            background-color: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .btn-back:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            aside {
+                position: static;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <aside>
+            <div class="nav-links">
+                <h3>جدول المحتويات</h3>
+                <ul>
+                    <li><a href="#intro">1. مقدمة عامة</a></li>
+                    <li><a href="#payment">2. سياسات الدفع والرصيد</a></li>
+                    <li><a href="#delivery">3. بروتوكول التسليم والوقت</a></li>
+                    <li><a href="#ownership">4. نقل الملكية والمسؤولية</a></li>
+                    <li><a href="#refund">5. سياسة الاسترجاع والإلغاء</a></li>
+                    <li><a href="#privacy">6. الخصوصية والأمان</a></li>
+                    <li><a href="#contact">7. الاتصال والدعم</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main>
+            <h1>شروط الخدمة وسياسات الاستخدام</h1>
+            <span class="last-updated">آخر تحديث: 26 نوفمبر 2025</span>
+
+            <div id="intro">
+                <p>مرحباً بك في <strong>TeleRak (تيليراك)</strong>. يرجى قراءة هذه الشروط بعناية قبل استخدام خدماتنا. بمجرد استخدامك للبوت (@QIObot) أو شحن رصيدك، فإنك توافق موافقة كاملة ونهائية على الالتزام بجميع البنود الواردة أدناه.</p>
+            </div>
+
+            <h2 id="payment">1. سياسات الدفع والرصيد</h2>
+            <p>يعمل النظام بنظام "المحفظة الرقمية المسبقة الدفع". يتم شحن الرصيد حصراً عبر الوكلاء المعتمدين لدينا.</p>
+            <ul>
+                <li><strong>تحويل الأموال:</strong> يتم تحويل قيمة الرصيد إلى الوكيل المعتمد (مثل @anas5 أو @e_e_9_9) بناءً على وسيلة الدفع المتاحة في بلدك.</li>
+                <li><strong>القيمة السوقية:</strong> تخضع أسعار النقاط لأسعار الصرف الموضحة في قناة التحديثات، وقد تتغير دون إشعار مسبق.</li>
+                <li><strong>صلاحية الرصيد:</strong> الرصيد المشحون داخل البوت يظل صالحاً للاستخدام في أي وقت ولا تنتهي صلاحيته ما لم يتم مخالفة شروط الاستخدام.</li>
+            </ul>
+
+            <h2 id="delivery">2. بروتوكول التسليم والوقت (هام جداً)</h2>
+            <p>تتميز خدماتنا بالسرعة والأتمتة الكاملة. لضمان جودة الخدمة، يخضع المستخدم لقيود زمنية صارمة أثناء عملية الشراء:</p>
+            
+            <div class="danger-box">
+                <strong>⚠️ قاعدة الخمس دقائق (5 Minutes Rule):</strong><br>
+                يجب إرسال كود التفعيل إلى البوت خلال 5 دقائق كحد أقصى من إتمام عملية الدفع. الفشل في ذلك يؤدي لإلغاء الطلب تلقائياً.
+            </div>
+
+            <div class="danger-box">
+                <strong>⚠️ قاعدة الدقيقتين (2 Minutes Rule):</strong><br>
+                فور استلام كود التفعيل، يمنحك النظام مهلة دقيقتين فقط لإتمام تسجيل الدخول إلى الحساب. التأخر عن هذه المهلة يؤدي لتعطيل الكود.
+            </div>
+
+            <h2 id="ownership">3. نقل الملكية وإخلاء المسؤولية</h2>
+            <p>نحن نقدم خدمة بيع حسابات وأرقام تفعيل. تنتهي علاقتنا بالمنتج فور تسليمه:</p>
+            <ul>
+                <li><strong>نقل الملكية:</strong> بمجرد دخولك للحساب، يقوم البوت تلقائياً بتنفيذ أمر "مغادرة الجلسة" (Log Out)، لتنتقل ملكية الحساب إليك بنسبة 100%.</li>
+                <li><strong>الاستخدام القانوني:</strong> يتحمل العميل المسؤولية القانونية والأخلاقية الكاملة عن كيفية استخدام الحسابات. تخلي إدارة TeleRak مسؤوليتها عن أي سوء استخدام يخالف قوانين منصة تيليجرام أو القوانين المحلية.</li>
+                <li><strong>ضمان الحسابات:</strong> الحسابات القديمة (Old Creation) تتمتع بثبات عالٍ، لكننا لا نضمن عدم الحظر مستقبلاً في حال مخالفة العميل لسياسات تيليجرام (مثل الإرسال العشوائي Spam).</li>
+            </ul>
+
+            <h2 id="refund">4. سياسة الاسترجاع والإلغاء</h2>
+            <p>نظراً لطبيعة المنتجات الرقمية، تطبق السياسة التالية بصرامة:</p>
+            <div class="policy-box">
+                <strong>حالات الاسترجاع المقبولة:</strong><br>
+                يتم استرجاع المبلغ بالكامل إلى "محفظتك داخل البوت" تلقائياً في حالة فشل النظام في تسليم الكود أو انتهاء المهلة الزمنية قبل تسجيل الدخول.
+            </div>
+            <p><strong>حالات رفض الاسترجاع:</strong> لا يمكن، تحت أي ظرف، استرجاع الأموال أو استبدال الحساب بعد نجاح عملية تسجيل الدخول (Login Success)، حيث يعتبر المنتج مستهلكاً.</p>
+
+            <h2 id="privacy">5. الخصوصية والأمان</h2>
+            <p>نحن نلتزم بحماية بياناتك:</p>
+            <ul>
+                <li>لا نحتفظ بأي سجلات للمحادثات أو البيانات داخل الحسابات المباعة.</li>
+                <li>يتم حذف ارتباط البوت بالحساب فوراً بعد البيع.</li>
+                <li>البيانات المالية (معلومات البطاقات) تتم معالجتها خارج البوت عبر الوكلاء ولا يتم تخزينها في خوادمنا.</li>
+            </ul>
+
+            <h2 id="contact">6. الاتصال والدعم</h2>
+            <p>للمشاكل التقنية المتعلقة بالبوت أو عمليات الشحن، يرجى التواصل مع الدعم الفني الرسمي:</p>
+            <ul>
+                <li>الدعم العام والتقني: <a href="https://t.me/e_e_9_9" style="color: var(--accent);">@e_e_9_9</a></li>
+                <li>دعم المدفوعات (العراق/السعودية): <a href="https://t.me/anas5" style="color: var(--accent);">@anas5</a></li>
+            </ul>
+
+            <a href="index.html" class="btn-back">← العودة للصفحة الرئيسية</a>
+        </main>
+    </div>
+
+</body>
+</html>
